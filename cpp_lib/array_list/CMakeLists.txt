@@ -1,10 +1,8 @@
-#
-file(GLOB c_array_list_srcs ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
-
-add_library(c_array_list SHARED ${c_array_list_srcs})
+# add array list library
+add_library(c_array_list INTERFACE)
 
 target_include_directories(c_array_list
-    PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include/
+    INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/include/
 )
 
 add_library(CPP::array_list ALIAS c_array_list)
