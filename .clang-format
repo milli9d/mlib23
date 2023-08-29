@@ -1,6 +1,6 @@
 ---
 Language: Cpp
-BasedOnStyle: WebKit
+BasedOnStyle: llvm
 AlignConsecutiveMacros: true
 AlignOperands: true
 AlignTrailingComments: true
@@ -24,11 +24,11 @@ BraceWrapping:
   AfterFunction: true
   AfterNamespace: false
   AfterObjCDeclaration: true
-  AfterStruct: true
+  AfterStruct: false
   AfterUnion: true
   AfterExternBlock: false
   BeforeCatch: true
-  BeforeElse: true
+  BeforeElse: false
   BeforeLambdaBody: false
   BeforeWhile: true
   IndentBraces: false
@@ -37,7 +37,7 @@ BraceWrapping:
   SplitEmptyNamespace: false
 BreakBeforeTernaryOperators: true
 BreakConstructorInitializers: BeforeColon
-ColumnLimit: 80
+ColumnLimit: 120
 CompactNamespaces: true
 Cpp11BracedListStyle: false
 FixNamespaceComments: true
