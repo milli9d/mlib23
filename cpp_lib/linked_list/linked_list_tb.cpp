@@ -29,6 +29,10 @@ void linked_list_demo()
     //     itr = itr / 10u;
     // }
 
+    list.insert(99u, 3u);
+
+    list.delete_idx(3u);
+
     // std::cout << list;
 }
 
