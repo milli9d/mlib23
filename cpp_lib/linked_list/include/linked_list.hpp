@@ -71,9 +71,27 @@ class linked_list
     }
 
   public:
-    /* ===================================================================== */
-    /* Iterator API */
-    /* ===================================================================== */
+    /* =================================================================== */
+    /* Constructors/Destructors */
+    /* =================================================================== */
+
+    /**
+     * @brief Default constructor
+     */
+    linked_list() : _head(NULL), _sz(0u) {}
+
+    /**
+     * @brief Default destructor
+     */
+    ~linked_list() {}
+
+    /* =================================================================== */
+    /* Iterator overloads */
+    /* =================================================================== */
+
+    /**
+     * @brief Iterator
+     */
     class iterator
     {
       private:
@@ -227,6 +245,39 @@ class linked_list
 
         /* update size */
         _sz--;
+    }
+
+    /**
+     * @brief Count occurrences of particular element node
+     * @param val
+     * @return
+     */
+    size_t count_occurrence(const T& val)
+    {
+        /* if list is invalid throw exception */
+        if (_head == nullptr) {
+            throw std::invalid_argument("Invalid head pointer");
+        }
+
+        /* if list is empty, return 0 */
+        if (_sz == 0u) {
+            return 0u;
+        }
+
+        /* traverse and count matches */
+        node_pointer_t ptr = _head;
+        size_t count = 0u;
+        while (ptr != NULL) {
+            /* found match */
+            if (ptr->val == val) {
+                count++;
+            }
+
+            /* move forward */
+            ptr = ptr->next;
+        }
+
+        return count;
     }
 };
 

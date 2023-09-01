@@ -30,6 +30,12 @@ void linked_list_demo()
     // }
 
     list.insert(99u, 3u);
+    list.insert(99u, 3u);
+    list.insert(99u, 3u);
+    list.insert(99u, 3u);
+    list.insert(99u, 3u);
+    list.insert(99u, 3u);
+    list.insert(99u, 3u);
 
     list.delete_idx(3u);
 
@@ -47,12 +53,22 @@ void double_linked_list_demo()
     // list.push_front(10u);
 
     // std::cout << list << std::endl;
+
+    std::cout << "Count " << list.count_occurrence(99u) << std::endl;
+
+    cpp_lib::linked_list<std::string> str_arr;
+
+    str_arr.push_back("Hello World!");
+    str_arr.push_back("Hello World!");
+    str_arr.push_back("Hello World!");
+    str_arr.push_back("Hello World!");
+
+    std::cout << "Count " << str_arr.count_occurrence("Hello World!") << std::endl;
 }
 
 int main(int argc, char** argv)
 {
     linked_list_demo();
     double_linked_list_demo();
-
     return 0u;
 }

@@ -6,8 +6,8 @@ set(CMAKE_CXX_STANDARD 23)
 # Add interview project files
 project(interview_prep_summer_2023)
 
-set(_C_FLAGS "-Wall -g -Og")
-set(_CXX_FLAGS "-Wall -g -Og")
+set(_C_FLAGS "-fsanitize=address -Wall -Werror -g -Og")
+set(_CXX_FLAGS "-fsanitize=address -Wall -Werror -g -Og")
 
 set(CMAKE_C_FLAGS_DEBUG ${_C_FLAGS})
 set(CMAKE_C_FLAGS_MINSIZEREL ${_C_FLAGS})
@@ -22,6 +22,9 @@ set(BASE_DIR ${CMAKE_CURRENT_SOURCE_DIR})
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${BIN_DIR})
 set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${LIB_DIR})
 
+add_compile_options(-fsanitize=address)
+add_link_options(-fsanitize=address)
+
 # add sources
 file(GLOB cmake_srcs ${CMAKE_CURRENT_SOURCE_DIR}/cmake/*.cmake)
 include(${cmake_srcs})
@@ -34,3 +37,11 @@ target_link_libraries(test_bench
 )
 
 add_custom_target(run_tb COMMAND test_bench)
+
+# add test bench program
+add_executable(test_bench_c test_bench.c)
+
+target_link_libraries(test_bench_c
+)
+
+add_custom_target(run_tb_c COMMAND test_bench)
