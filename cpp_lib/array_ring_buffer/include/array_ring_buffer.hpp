@@ -25,7 +25,11 @@ class array_ring_buffer
 {
   private:
     /* meta ring buffer */
-    T* _data{};
+    typedef T* pointer_t;
+    typedef const pointer_t const_pointer_t;
+
+    pointer_t _data{};
+
     size_t _sz = 0u;
     size_t _head{};
     size_t _tail{};
@@ -41,18 +45,17 @@ class array_ring_buffer
     array_ring_buffer() : _sz(S)
     {
         /* allocate buffer */
-        _data = (T*)calloc(sizeof(T), _sz);
+        _data = (T*)calloc(S, sizeof(T));
     }
 
     /**
+     *
      * @brief Destructor
      */
     ~array_ring_buffer()
     {
         /* deallocate memory */
-        if (_data) {
-            free(_data);
-        }
+        free(_data);
     }
 
     /* ===================================================================== */
