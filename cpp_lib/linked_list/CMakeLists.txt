@@ -1,7 +1,5 @@
-#
-file(GLOB c_linked_list_srcs ${CMAKE_CURRENT_SOURCE_DIR}/src/*.cpp)
-
-add_library(c_linked_list INTERFACE ${c_linked_list_srcs})
+# add linked list libraries
+add_library(c_linked_list INTERFACE)
 
 target_include_directories(c_linked_list
     INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/include/

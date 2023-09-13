@@ -30,6 +30,7 @@ include(${cmake_srcs})
 add_executable(test_bench test_bench.cpp)
 
 target_link_libraries(test_bench
+    PUBLIC c_lib
 )
 
 add_custom_target(run_tb COMMAND test_bench)
