@@ -11,25 +11,41 @@
 
 #include <vector>
 
-#include "linked_list.h"
+#include "stack.h"
 
 int main(int argc, char** argv)
 {
-    std::vector<uint8_t> arr;
-    arr.resize(10u);
+    stack_s stack = { 0u };
 
-    std::vector<uint8_t>::iterator itr = arr.begin();
-    *itr = 10u;
+    stack_init(&stack, 10u);
 
-    node_s* list = NULL;
+    uint8_t val = 0u;
+    stack_pop(&stack, &val);
 
-    push_front(50u, &list);
-    push_front(40u, &list);
-    push_front(30u, &list);
-    push_front(20u, &list);
-    push_front(10u, &list);
+    stack_push(&stack, 10u);
+    stack_push(&stack, 20u);
+    stack_push(&stack, 30u);
+    stack_push(&stack, 10u);
+    stack_push(&stack, 20u);
+    stack_push(&stack, 30u);
+    stack_push(&stack, 10u);
+    stack_push(&stack, 20u);
+    stack_push(&stack, 30u);
+    stack_push(&stack, 10u);
+    stack_push(&stack, 10u);
 
-    print_list(list);
+    val = 0u;
+    stack_pop(&stack, &val);
+    stack_pop(&stack, &val);
+    stack_pop(&stack, &val);
+    stack_pop(&stack, &val);
+    stack_pop(&stack, &val);
+    stack_pop(&stack, &val);
+    stack_pop(&stack, &val);
+
+    printf("VAL = %d\n", val);
+
+    stack_print(&stack);
 
     return 0;
 }
