@@ -47,5 +47,7 @@ int main(int argc, char** argv)
 
     stack_print(&stack);
 
+    stack_deinit(&stack);
+
     return 0;
 }
