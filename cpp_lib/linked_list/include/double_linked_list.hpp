@@ -19,8 +19,7 @@ namespace cpp_lib {
  * @tparam T
  */
 template<typename T>
-class double_linked_list
-{
+class double_linked_list {
   public:
     /**
      * @brief Double linked list node type
@@ -41,8 +40,7 @@ class double_linked_list
     node_pointer_t _tail{};
     size_t _sz{};
 
-    node_pointer_t new_node(const T& val)
-    {
+    node_pointer_t new_node(const T& val) {
         node_pointer_t ptr = std::make_shared<node_t>();
 
         ptr.get()->val = val;
@@ -53,8 +51,7 @@ class double_linked_list
     }
 
   public:
-    class iterator
-    {
+    class iterator {
       private:
         /* node pointer */
         node_pointer_t _ptr = nullptr;
@@ -74,8 +71,7 @@ class double_linked_list
          * @param obj
          * @return
          */
-        friend std::ostream& operator<<(std::ostream& os, const iterator& obj)
-        {
+        friend std::ostream& operator<<(std::ostream& os, const iterator& obj) {
             /* pretty print output stream */
             os << obj._ptr << std::endl;
             return os;
@@ -86,8 +82,7 @@ class double_linked_list
          * @param _node
          * @return
          */
-        iterator& operator=(const node_pointer_t _node)
-        {
+        iterator& operator=(const node_pointer_t _node) {
             this->_ptr = _node;
             return *this;
         }
@@ -98,8 +93,7 @@ class double_linked_list
          * @param obj2
          * @return
          */
-        friend bool operator!=(iterator& obj1, iterator& obj2)
-        {
+        friend bool operator!=(iterator& obj1, iterator& obj2) {
             return obj1._ptr == obj2._ptr;
         }
 
@@ -108,8 +102,7 @@ class double_linked_list
          * @param obj
          * @return
          */
-        iterator& operator++()
-        {
+        iterator& operator++() {
             if (_ptr) {
                 _ptr = _ptr->next;
             }
@@ -120,8 +113,7 @@ class double_linked_list
          * @brief Post-fix increment operator
          * @return
          */
-        iterator& operator++(int)
-        {
+        iterator& operator++(int) {
             iterator& itr = *this;
             ++(*this);
             return itr;
@@ -131,8 +123,7 @@ class double_linked_list
          * @brief De-reference operator
          * @return
          */
-        constexpr T& operator*()
-        {
+        constexpr T& operator*() {
             return _ptr->val;
         }
     };
@@ -141,8 +132,7 @@ class double_linked_list
      * @brief Iterator to beginning of list
      * @return
      */
-    iterator begin()
-    {
+    iterator begin() {
         return iterator(_head);
     }
 
@@ -150,8 +140,7 @@ class double_linked_list
      * @brief Iterator to end of list
      * @return
      */
-    iterator end()
-    {
+    iterator end() {
         return iterator(nullptr);
     }
 
@@ -173,13 +162,10 @@ class double_linked_list
      * @param obj
      * @return
      */
-    friend std::ostream& operator<<(std::ostream& os, const double_linked_list<T>& obj)
-    {
+    friend std::ostream& operator<<(std::ostream& os, const double_linked_list<T>& obj) {
         /*  */
         os << "[HEAD] <-->";
-        for (const auto itr: obj) {
-            os << itr << "<-->";
-        }
+        for (const auto itr: obj) { os << itr << "<-->"; }
         os << "[TAIL]";
         return os;
     }
@@ -192,8 +178,7 @@ class double_linked_list
      * @brief Push to the front of the list
      * @param val
      */
-    void push_front(const T& val)
-    {
+    void push_front(const T& val) {
         /* allocate new node */
         node_pointer_t n_node = new_node(val);
         _sz++;

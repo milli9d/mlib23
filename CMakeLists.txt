@@ -33,7 +33,7 @@ include(${cmake_srcs})
 add_executable(test_bench test_bench.cpp)
 
 target_link_libraries(test_bench
-    PUBLIC c_lib
+    PUBLIC c_lib::timer_cb
 )
 
 add_custom_target(run_tb COMMAND test_bench)

@@ -4,7 +4,6 @@
  * For more information, please refer to <https://unlicense.org>
  */
 
-
 // Regular text
 #define COLOR_BLACK   "\e[0;30m"
 #define COLOR_RED     "\e[0;31m"

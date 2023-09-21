@@ -20,10 +20,9 @@ extern "C" {
  * @brief Allocate new node
  * @return
  */
-static node_s* new_node(uint64_t val)
-{
+static node_s* new_node(uint64_t val) {
     /* allocate new node */
-    node_s* ptr = (node_s*)calloc(sizeof(node_s), 1u);
+    node_s* ptr = (node_s*) calloc(sizeof(node_s), 1u);
 
     ptr->next = NULL;
     ptr->val = val;
@@ -36,8 +35,7 @@ static node_s* new_node(uint64_t val)
  * @param head
  * @return
  */
-size_t list_size(const node_s* head)
-{
+size_t list_size(const node_s* head) {
     if (head == NULL) {
         return 0;
     }
@@ -59,8 +57,7 @@ size_t list_size(const node_s* head)
  * @param head
  * @return
  */
-int32_t push_back(uint64_t val, node_s** head)
-{
+int32_t push_back(uint64_t val, node_s** head) {
     /* if list pointer is invalid , return error */
     if (head == NULL) {
         return -EINVAL;
@@ -74,9 +71,7 @@ int32_t push_back(uint64_t val, node_s** head)
 
     /* go to node before last node */
     node_s* ptr = *head;
-    while (ptr != NULL && ptr->next != NULL) {
-        ptr = ptr->next;
-    }
+    while (ptr != NULL && ptr->next != NULL) { ptr = ptr->next; }
 
     /* now ptr is at last node */
 
@@ -88,8 +83,7 @@ int32_t push_back(uint64_t val, node_s** head)
  * @param val
  * @return
  */
-int32_t push_front(uint64_t val, node_s** head)
-{
+int32_t push_front(uint64_t val, node_s** head) {
     /* check if linked list pointer is invalid */
     if (head == NULL) {
         return -EINVAL;
@@ -112,8 +106,7 @@ int32_t push_front(uint64_t val, node_s** head)
  * @brief Reverse the linked list
  * @return
  */
-int32_t reverse_list()
-{
+int32_t reverse_list() {
     return 0;
 }
 
@@ -122,8 +115,7 @@ int32_t reverse_list()
  * @param head
  * @return
  */
-int32_t print_list(const node_s* head)
-{
+int32_t print_list(const node_s* head) {
     /* if list pointer is invalid , return */
     if (head == NULL) {
         return -ENODATA;
@@ -150,8 +142,7 @@ int32_t print_list(const node_s* head)
  * @param argv
  * @return
  */
-int main(int argc, char** argv)
-{
+int main(int argc, char** argv) {
     node_s* list = new_node(10u);
 
     push_front(20u, &list);

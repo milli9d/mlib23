@@ -29,8 +29,7 @@
 namespace cpp_lib {
 
 template<typename T>
-class linked_list
-{
+class linked_list {
   public:
     /**
      * @brief Node type definition
@@ -60,8 +59,7 @@ class linked_list
      * @param val
      * @return
      */
-    node_pointer_t new_node(T& val)
-    {
+    node_pointer_t new_node(T& val) {
         /* fill node */
         node_pointer_t ptr = std::make_shared<T>();
         ptr->next = NULL;
@@ -92,8 +90,7 @@ class linked_list
     /**
      * @brief Iterator
      */
-    class iterator
-    {
+    class iterator {
       private:
         node_pointer_t _ptr = nullptr;
 
@@ -119,8 +116,7 @@ class linked_list
      * @brief Push to the front of the list
      * @param val
      */
-    void push_front(const T& val)
-    {
+    void push_front(const T& val) {
         /* allocate new node */
         node_pointer_t _node = new_node(val);
         if (_node == NULL) {
@@ -146,8 +142,7 @@ class linked_list
      * @brief Push to the end of the list
      * @param val
      */
-    void push_back(const T& val)
-    {
+    void push_back(const T& val) {
         /* allocate new node */
         node_pointer_t _node = new_node(val);
 
@@ -157,9 +152,7 @@ class linked_list
         } else {
             /* traverse to the end of the list */
             node_pointer_t _ptr = _head;
-            while (_ptr->next != NULL) {
-                _ptr = _ptr.get()->next;
-            }
+            while (_ptr->next != NULL) { _ptr = _ptr.get()->next; }
 
             /* attach node */
             _ptr.get()->next = _node;
@@ -177,8 +170,7 @@ class linked_list
      * @param val   Value to insert
      * @param idx   Index to insert at
      */
-    void insert(const T& val, size_t idx)
-    {
+    void insert(const T& val, size_t idx) {
         /* check if index is out of range */
         if (idx > _sz) {
             throw std::out_of_range("Index out of range");
@@ -216,8 +208,7 @@ class linked_list
      * @brief Delete node at idx
      * @param idx
      */
-    void delete_idx(size_t idx)
-    {
+    void delete_idx(size_t idx) {
         /* check if idx is out of range */
         if (idx > _sz) {
             throw std::out_of_range("Index out of range");
@@ -230,9 +221,7 @@ class linked_list
 
         /* navigate to pointer before idx to be deleted */
         node_pointer_t ptr = _head;
-        while (ptr != NULL && idx-- > 1u) {
-            ptr = ptr->next;
-        }
+        while (ptr != NULL && idx-- > 1u) { ptr = ptr->next; }
 
         /* attach future pointer */
         node_pointer_t next = nullptr;
@@ -252,8 +241,7 @@ class linked_list
      * @param val
      * @return
      */
-    size_t count_occurrence(const T& val)
-    {
+    size_t count_occurrence(const T& val) {
         /* if list is invalid throw exception */
         if (_head == nullptr) {
             throw std::invalid_argument("Invalid head pointer");

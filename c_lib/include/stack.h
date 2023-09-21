@@ -29,6 +29,13 @@ typedef struct _stack_s {
 int32_t stack_init(stack_s* out, size_t sz);
 
 /**
+ * @brief De-initialize a stack on heap
+ * @param in
+ * @return
+ */
+int32_t stack_deinit(stack_s* in);
+
+/**
  * @brief Pretty print a stack
  * @param in
  */
@@ -44,17 +51,17 @@ int32_t stack_push(stack_s* stack, uint8_t val);
 
 /**
  * @brief Peek the top value of the stack
- * @param stack 
- * @param out 
- * @return 
+ * @param stack
+ * @param out
+ * @return
  */
 int32_t stack_peek(stack_s* stack, uint8_t* out);
 
 /**
  * @brief Pop the top value of the stack
- * @param stack 
- * @param out 
- * @return 
+ * @param stack
+ * @param out
+ * @return
  */
 int32_t stack_pop(stack_s* stack, uint8_t* out);
 

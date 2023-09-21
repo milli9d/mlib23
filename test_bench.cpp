@@ -9,43 +9,35 @@
 #include <stdint.h>
 #include <string>
 
-#include <vector>
+#include <unistd.h>
+#include <signal.h>
+#include <time.h>
 
-#include "stack.h"
+#include <sys/time.h>
 
-int main(int argc, char** argv)
-{
-    stack_s stack = { 0u };
+#include "time_str.hpp"
+#include "colors.h"
 
-    stack_init(&stack, 10u);
+void timer_callback(int signum) {
+    printf(COLOR_HIGH_GREEN "INFO: " COLOR_RESET "Signal triggered at %s\n", time_str::get_time_str());
+}
 
-    uint8_t val = 0u;
-    stack_pop(&stack, &val);
+int main(int argc, char** argv) {
+    printf("Signal test started at %s\n", time_str::get_time_str());
 
-    stack_push(&stack, 10u);
-    stack_push(&stack, 20u);
-    stack_push(&stack, 30u);
-    stack_push(&stack, 10u);
-    stack_push(&stack, 20u);
-    stack_push(&stack, 30u);
-    stack_push(&stack, 10u);
-    stack_push(&stack, 20u);
-    stack_push(&stack, 30u);
-    stack_push(&stack, 10u);
-    stack_push(&stack, 10u);
+    signal(SIGALRM, timer_callback);
 
-    val = 0u;
-    stack_pop(&stack, &val);
-    stack_pop(&stack, &val);
-    stack_pop(&stack, &val);
-    stack_pop(&stack, &val);
-    stack_pop(&stack, &val);
-    stack_pop(&stack, &val);
-    stack_pop(&stack, &val);
+    struct itimerval timer;
 
-    printf("VAL = %d\n", val);
+    timer.it_value.tv_sec = 1u;
+    timer.it_value.tv_usec = 0u;
 
-    stack_print(&stack);
+    timer.it_interval.tv_sec = 1u;
+    timer.it_interval.tv_usec = 0u;
+
+    setitimer(ITIMER_REAL, &timer, NULL);
+
+    while (sleep(10u) != 0) {}
 
     return 0;
 }

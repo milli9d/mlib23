@@ -13,8 +13,7 @@
 #include "linked_list.hpp"
 #include "double_linked_list.hpp"
 
-void linked_list_demo()
-{
+void linked_list_demo() {
     cpp_lib::linked_list<uint32_t> list{};
 
     // list.push_front(30u);
@@ -42,8 +41,7 @@ void linked_list_demo()
     // std::cout << list;
 }
 
-void double_linked_list_demo()
-{
+void double_linked_list_demo() {
     // cpp_lib::double_linked_list<uint32_t> list;
     // cpp_lib::double_linked_list<uint32_t>::iterator itr = list.begin();
 
@@ -66,8 +64,7 @@ void double_linked_list_demo()
     std::cout << "Count " << str_arr.count_occurrence("Hello World!") << std::endl;
 }
 
-int main(int argc, char** argv)
-{
+int main(int argc, char** argv) {
     linked_list_demo();
     double_linked_list_demo();
     return 0u;

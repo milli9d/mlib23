@@ -36,13 +36,9 @@ namespace g_app {
 /**
  * @brief
  */
-class decompress
-{
+class decompress {
   private:
-
   public:
-    
-
 };
 
 } // namespace g_app

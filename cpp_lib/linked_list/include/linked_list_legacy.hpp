@@ -31,8 +31,7 @@
 namespace cpp_lib {
 
 template<typename T>
-class linked_list
-{
+class linked_list {
   public:
     /**
      * @brief node definition
@@ -51,8 +50,7 @@ class linked_list
     /* =================================================================== */
     /* Iterator definitions */
     /* =================================================================== */
-    class iterator
-    {
+    class iterator {
       public:
       private:
     };

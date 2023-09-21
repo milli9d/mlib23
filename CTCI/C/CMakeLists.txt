@@ -2,19 +2,18 @@
 include_directories(include)
 
 # Get a list of all source files in the 'src/' directory
-file(GLOB clib_sources "${CMAKE_CURRENT_SOURCE_DIR}/*.c")
+file(GLOB SOURCES "src/*.c*")
 
 # Loop over each source file
-foreach(source_file ${clib_sources})
+foreach(source_file ${SOURCES})
   # Extract the filename without the extension
   get_filename_component(filename_we ${source_file} NAME_WE)
 
   # Create an executable for each source file
-  add_library(c_lib_${filename_we} SHARED ${source_file})
-  add_library(c_lib::${filename_we} ALIAS c_lib_${filename_we})
+  add_executable(standalone_${filename_we} ${source_file})
 
   # If additional libraries are needed, you can link them like so:
-  target_include_directories(c_lib_${filename_we} 
-      PUBLIC    ${CMAKE_CURRENT_SOURCE_DIR}/include
+  target_link_libraries(standalone_${filename_we} 
+      PUBLIC c_lib::logging
   )
-  endforeach()
+endforeach()

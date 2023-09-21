@@ -22,10 +22,9 @@ static int32_t remove_dups(node_s** head);
 /**
  * Allocate a new node
  */
-static node_s* _new_node(const uint8_t val, const node_s* next)
-{
-    node_s* node = (node_s*)malloc(sizeof(node_s));
-    node->next = (node_s*)next;
+static node_s* _new_node(const uint8_t val, const node_s* next) {
+    node_s* node = (node_s*) malloc(sizeof(node_s));
+    node->next = (node_s*) next;
     node->val = val;
 
     return node;
@@ -34,8 +33,7 @@ static node_s* _new_node(const uint8_t val, const node_s* next)
 /**
  * Push to the front of the list
  */
-int32_t push_front(node_s** head, const uint8_t val)
-{
+int32_t push_front(node_s** head, const uint8_t val) {
     /* if head pointer is invalid , return error */
     if (head == NULL) {
         printf("Error: Invalid list.\n");
@@ -57,8 +55,7 @@ int32_t push_front(node_s** head, const uint8_t val)
 /**
  * Pretty print a list
  */
-int32_t print_list(const node_s* list)
-{
+int32_t print_list(const node_s* list) {
     /* if list is empty return error */
     if (list == NULL) {
         printf("Empty list.\n");
@@ -66,7 +63,7 @@ int32_t print_list(const node_s* list)
     }
 
     /* iterate through list and print elements */
-    node_s* ptr = (node_s*)list;
+    node_s* ptr = (node_s*) list;
     printf("HEAD -> ");
 
     while (ptr != NULL) {
@@ -81,8 +78,7 @@ int32_t print_list(const node_s* list)
 /**
  * De-allocate heap memory
  */
-int32_t dealloc_list(node_s** head)
-{
+int32_t dealloc_list(node_s** head) {
     /* list is already invalidated */
     if (head == NULL) {
         return -ENODATA;
@@ -112,8 +108,7 @@ int32_t dealloc_list(node_s** head)
 /**
  * Remove duplicates from list
  */
-int32_t remove_dups(node_s** head)
-{
+int32_t remove_dups(node_s** head) {
     /* sanity checks */
     if (head == NULL) {
         return -EINVAL;
@@ -163,8 +158,7 @@ int32_t remove_dups(node_s** head)
  * @param head
  * @return
  */
-int32_t reverse_list(node_s** head)
-{
+int32_t reverse_list(node_s** head) {
     /* if list pointer is invalid , return error */
     if (head == NULL) {
         return -ENODATA;
@@ -197,8 +191,7 @@ int32_t reverse_list(node_s** head)
     return 0;
 }
 
-int main(int argc, char** argv)
-{
+int main(int argc, char** argv) {
     /* test 1 */
     {
         node_s* list = NULL;
@@ -208,15 +201,15 @@ int main(int argc, char** argv)
             push_front(&list, i * 10);
         }
 
-        (void)print_list(list);
+        (void) print_list(list);
 
-        (void)remove_dups(&list);
-        (void)print_list(list);
+        (void) remove_dups(&list);
+        (void) print_list(list);
 
-        (void)reverse_list(&list);
-        (void)print_list(list);
+        (void) reverse_list(&list);
+        (void) print_list(list);
 
-        (void)dealloc_list(&list);
+        (void) dealloc_list(&list);
     }
 
     /* test 2 */
@@ -225,11 +218,11 @@ int main(int argc, char** argv)
 
         push_front(&list, 10);
 
-        (void)remove_dups(&list);
+        (void) remove_dups(&list);
 
-        (void)print_list(list);
+        (void) print_list(list);
 
-        (void)dealloc_list(&list);
+        (void) dealloc_list(&list);
     }
 
     return 0;

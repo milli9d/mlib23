@@ -1,0 +1,45 @@
+/**
+ * @brief
+ *
+ * <description>
+ *
+ *
+ */
+// BUDT
+
+#include <iostream>
+#include <string>
+#include <unordered_set>
+
+#include "logging.h"
+LOG_TAG(EX1_1);
+
+namespace ctci {
+
+class something {
+  public:
+    /**
+     * @brief Evaluate if all chars in string are unique
+     * @param in
+     * @return
+     */
+    static const std::string your_ques(const std::string& in) {
+        bool res = true;
+
+        return res ? "True" : "False";
+    }
+};
+
+} // namespace ctci
+
+int main(int argc, char** argv) {
+    /* test cases */
+
+    /* empty string */
+    ctci::something::eval("");
+
+    /* nominal case */
+    ctci::something::eval("Hi, World!");
+    ctci::something::eval("Hello, World!");
+    return 0;
+}

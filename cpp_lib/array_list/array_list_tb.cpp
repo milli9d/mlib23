@@ -12,8 +12,7 @@
 
 #include "array_list.hpp"
 
-void array_list_demo()
-{
+void array_list_demo() {
     cpp_lib::array_list<uint32_t> new_arr_list;
 
     new_arr_list.reserve(100u);
@@ -26,8 +25,7 @@ void array_list_demo()
     std::cout << new_arr_list;
 }
 
-int main(int argc, char** argv)
-{
+int main(int argc, char** argv) {
     array_list_demo();
 
     return 0u;

@@ -15,16 +15,13 @@
 /**
  * @brief
  */
-void _demo(void)
-{
+void _demo(void) {
     cpp_lib::array_ring_buffer<uint16_t, 10u> arr;
 
     std::cout << arr;
-
 }
 
-int main(int argc, char** argv)
-{
+int main(int argc, char** argv) {
     _demo();
     return 0u;
 }

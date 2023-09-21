@@ -21,8 +21,7 @@
 namespace cpp_lib {
 
 template<typename T, size_t S>
-class array_ring_buffer
-{
+class array_ring_buffer {
   private:
     /* meta ring buffer */
     typedef T* pointer_t;
@@ -42,18 +41,16 @@ class array_ring_buffer
     /**
      * @brief Default constructor
      */
-    array_ring_buffer() : _sz(S)
-    {
+    array_ring_buffer() : _sz(S) {
         /* allocate buffer */
-        _data = (T*)calloc(S, sizeof(T));
+        _data = (T*) calloc(S, sizeof(T));
     }
 
     /**
      *
      * @brief Destructor
      */
-    ~array_ring_buffer()
-    {
+    ~array_ring_buffer() {
         /* deallocate memory */
         free(_data);
     }
@@ -68,8 +65,7 @@ class array_ring_buffer
      * @param obj
      * @return
      */
-    friend std::ostream& operator<<(std::ostream& os, const array_ring_buffer<T, S>& obj)
-    {
+    friend std::ostream& operator<<(std::ostream& os, const array_ring_buffer<T, S>& obj) {
         /* pretty print to output stream */
         for (size_t i = 0u; i < obj._sz; i++) {
             os << obj._data[i];

@@ -13,18 +13,17 @@
 
 namespace cpp_lib {
 template<typename T, size_t S>
-class static_array
-{
-private:
+class static_array {
+  private:
     /* =================================================================== */
     /* Private data members */
     /* =================================================================== */
 
     /* allocate static array for data-type */
-    T _data[S] {};
+    T _data[S]{};
     size_t _sz = S;
 
-public:
+  public:
     /* =================================================================== */
     /* Constructors/Destructors */
     /* =================================================================== */
@@ -32,8 +31,7 @@ public:
     /**
      * @brief Default constructor
      */
-    static_array()
-    {
+    static_array() {
         /* perform checks on data type and sizes */
         if (_sz == 0u || sizeof(T) == 0u) {
             std::__throw_length_error("Array has invalid length.");
@@ -43,10 +41,9 @@ public:
     /**
      * @brief Default destructor
      */
-    ~static_array()
-    {
+    ~static_array() {
         /* clear array; secure erase */
-        memset((uint8_t*)_data, 0u, sizeof(T) * _sz);
+        memset((uint8_t*) _data, 0u, sizeof(T) * _sz);
     }
 
     /* =================================================================== */
@@ -66,8 +63,7 @@ public:
      * @brief Get begin iterator
      * @return
      */
-    constexpr iterator begin()
-    {
+    constexpr iterator begin() {
         return &_data[0u];
     }
 
@@ -75,8 +71,7 @@ public:
      * @brief Get end iterator
      * @return
      */
-    constexpr iterator end()
-    {
+    constexpr iterator end() {
         return &_data[_sz];
     }
 
@@ -84,8 +79,7 @@ public:
      * @brief Get begin reverse iterator
      * @return
      */
-    constexpr reverse_iterator rbegin()
-    {
+    constexpr reverse_iterator rbegin() {
         return std::reverse_iterator(end());
     }
 
@@ -93,8 +87,7 @@ public:
      * @brief Get end reverse iterator
      * @return
      */
-    constexpr reverse_iterator rend()
-    {
+    constexpr reverse_iterator rend() {
         return std::reverse_iterator(begin());
     }
 
@@ -107,12 +100,10 @@ public:
      * @param idx
      * @return
      */
-    constexpr T& operator[](size_t idx)
-    {
+    constexpr T& operator[](size_t idx) {
         /* sanity check */
         if (idx >= _sz) {
-            std::__throw_out_of_range_fmt("Out of array range. Size = %ld",
-                _sz);
+            std::__throw_out_of_range_fmt("Out of array range. Size = %ld", _sz);
         }
         return _data[idx];
     }
@@ -122,8 +113,7 @@ public:
      * @param obj
      * @return
      */
-    bool operator==(const static_array<T, S>& obj)
-    {
+    bool operator==(const static_array<T, S>& obj) {
         /* if length is not equal , arrays are not equal */
         if (_sz != obj._sz) {
             return false;
@@ -145,9 +135,7 @@ public:
      * @param obj
      * @return
      */
-    constexpr friend std::ostream& operator<<(std::ostream& os,
-        const static_array<T, S>& obj)
-    {
+    constexpr friend std::ostream& operator<<(std::ostream& os, const static_array<T, S>& obj) {
         /* sanity checks */
         if (obj._sz == 0u) {
             std::__throw_invalid_argument("Invalid array size");
@@ -158,9 +146,7 @@ public:
         }
 
         /* print data to ostream */
-        for (int i = 0; i < obj._sz; i++) {
-            os << "arr[" << i << "] => " << obj._data[i] << std::endl;
-        }
+        for (int i = 0; i < obj._sz; i++) { os << "arr[" << i << "] => " << obj._data[i] << std::endl; }
         return os;
     }
 
@@ -173,12 +159,10 @@ public:
      * @param idx
      * @return
      */
-    constexpr T& at(size_t idx)
-    {
+    constexpr T& at(size_t idx) {
         /* sanity check */
         if (idx >= _sz) {
-            std::__throw_out_of_range_fmt("Out of array range. Size = %ld",
-                _sz);
+            std::__throw_out_of_range_fmt("Out of array range. Size = %ld", _sz);
         }
         return _data[idx];
     }
@@ -187,12 +171,9 @@ public:
      * @brief Fill the array with a constant value
      * @param val
      */
-    constexpr void fill(const T& val)
-    {
+    constexpr void fill(const T& val) {
         /* iterate and fill all elements */
-        for (T& i: _data) {
-            i = val;
-        }
+        for (T& i: _data) { i = val; }
     }
 
     /**
@@ -200,8 +181,7 @@ public:
      * @param
      * @return
      */
-    constexpr T& front(void)
-    {
+    constexpr T& front(void) {
         return _data[0u];
     }
 
@@ -210,8 +190,7 @@ public:
      * @param
      * @return
      */
-    constexpr T& back(void)
-    {
+    constexpr T& back(void) {
         return _data[_sz - 1u];
     }
 
@@ -220,8 +199,7 @@ public:
      * @param
      * @return
      */
-    constexpr const T* data(void) const
-    {
+    constexpr const T* data(void) const {
         return _data;
     }
 
@@ -230,8 +208,7 @@ public:
      * @param
      * @return
      */
-    constexpr T* data(void)
-    {
+    constexpr T* data(void) {
         return _data;
     }
 };
