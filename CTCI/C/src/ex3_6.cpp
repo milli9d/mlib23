@@ -19,6 +19,8 @@
 #include <unordered_set>
 #include <stack>
 #include <memory>
+#include <numeric>
+
 
 #include "logging.h"
 LOG_TAG(EX3_6);
@@ -128,3 +130,4 @@ int main(int argc, char** argv) {
 
     return 0;
 }
+
