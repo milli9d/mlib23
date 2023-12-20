@@ -10,36 +10,63 @@
 #include <iostream>
 #include <string>
 #include <unordered_set>
+#include <assert.h>
 
 #include "logging.h"
 LOG_TAG(EX1_2);
 
 namespace ctci {
 
-class something {
+class is_permutation {
   public:
     /**
-     * @brief Evaluate if all chars in string are unique
+     * @brief Evaluate if one string is permutation of another
      * @param in
      * @return
      */
-    static const std::string your_ques(const std::string& in) {
-        bool res = true;
+    static const bool eval(const std::string& in1, const std::string& in2)
+    {
+        int32_t _memo[26u]{};
+        int32_t _count = 0;
 
-        return res ? "True" : "False";
+        if (in1.size() != in2.size()) {
+            return false;
+        }
+
+        /* fill memo */
+        for (char ch: in1) {
+            _memo[tolower(ch)]++;
+            _count++;
+        }
+
+        /* empty memo */
+        for (char ch: in2) {
+            _memo[tolower(ch)]--;
+            _count--;
+            if (_memo[tolower(ch)] < 0) {
+                return false;
+            }
+        }
+        return true;
     }
 };
 
 } // namespace ctci
 
-int main(int argc, char** argv) {
+int main(int argc, char** argv)
+{
     /* test cases */
 
     /* empty string */
-    ctci::something::eval("");
+    bool ret = false;
+    ret = ctci::is_permutation::eval("", "");
+    assert(ret == true);
 
     /* nominal case */
-    ctci::something::eval("Hi, World!");
-    ctci::something::eval("Hello, World!");
+    ret = ctci::is_permutation::eval("tacocat", "catocat");
+    assert(ret == true);
+    ret = ctci::is_permutation::eval("Hello, World!", "feege");
+    assert(ret == false);
+
     return 0;
 }
