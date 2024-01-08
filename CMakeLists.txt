@@ -43,7 +43,7 @@ add_executable(test_bench_c test_bench.c)
 
 target_link_libraries(test_bench_c
     PUBLIC c_lib::matrix
-    PUBLIC c_lib::logging
+    PUBLIC MLIB23::Logging
 )
 
 add_custom_target(run_tb_c COMMAND test_bench)
