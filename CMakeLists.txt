@@ -6,8 +6,8 @@ set(CMAKE_CXX_STANDARD 23)
 # Add interview project files
 project(interview_prep_summer_2023)
 
-set(_C_FLAGS "-fsanitize=address -Wall -Werror -g -Og")
-set(_CXX_FLAGS "-fsanitize=address -Wall -Werror -g -Og")
+# set(_C_FLAGS "-fsanitize=address -Wall -Werror -g -Og")
+# set(_CXX_FLAGS "-fsanitize=address -Wall -Werror -g -Og")
 
 set(CMAKE_C_FLAGS_DEBUG ${_C_FLAGS})
 set(CMAKE_C_FLAGS_MINSIZEREL ${_C_FLAGS})

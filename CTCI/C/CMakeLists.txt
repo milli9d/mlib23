@@ -1,8 +1,10 @@
 # Add the 'include/' directory to the include path
-include_directories(include)
+include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 # Get a list of all source files in the 'src/' directory
-file(GLOB SOURCES "src/*.c*")
+file(GLOB_RECURSE SOURCES 
+    "${CMAKE_CURRENT_SOURCE_DIR}/*.c*"
+)
 
 # Loop over each source file
 foreach(source_file ${SOURCES})
