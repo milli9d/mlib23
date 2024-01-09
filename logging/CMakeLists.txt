@@ -7,4 +7,4 @@ target_include_directories(logging_common
     PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
-add_library(MLIB23::Logging ALIAS logging_common)
+add_library(c_lib::logging ALIAS logging_common)

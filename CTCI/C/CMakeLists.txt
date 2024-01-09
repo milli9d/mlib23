@@ -16,6 +16,6 @@ foreach(source_file ${SOURCES})
 
   # If additional libraries are needed, you can link them like so:
   target_link_libraries(standalone_${filename_we} 
-      PUBLIC MLIB23::Logging
+      PUBLIC c_lib::logging
   )
 endforeach()
